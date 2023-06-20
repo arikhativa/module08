@@ -6,10 +6,9 @@
 #    By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/18 13:56:52 by yrabby            #+#    #+#              #
-#    Updated: 2023/06/19 17:05:52 by yrabby           ###   ########.fr        #
+#    Updated: 2023/06/20 10:25:35 by yrabby           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 NAME 					= test
 
@@ -29,20 +28,13 @@ SRC_DIR					= .
 SRC_NAME				= $(addsuffix $(SRC_SUFFIX), $(CLASS_NAME) $(SRC_MAIN) $(OTHER_SRC))
 SRC						= $(addprefix $(SRC_DIR)/, $(SRC_NAME))
 
-# template
-TEMPLATE_FILES			= easyfind
-TEMPLATE_DIR			= .
-TEMPLATE_SUFFIX			= .tpp
-TEMPLATE_NAME			= $(addsuffix $(TEMPLATE_SUFFIX), $(TEMPLATE_FILES))
-TEMPLATE				= $(addprefix $(TEMPLATE_DIR)/, $(TEMPLATE_NAME))
-
 # other header
 OTHER_HEAD				= easyfind
 
 # heads
 HEAD_SUFFIX				= .hpp
 HEAD_DIR				= .
-HEAD_NAME				= $(addsuffix $(HEAD_SUFFIX), $(CLASS_NAME))
+HEAD_NAME				= $(addsuffix $(HEAD_SUFFIX), $(CLASS_NAME) $(OTHER_HEAD))
 HEAD					= $(addprefix $(HEAD_DIR)/, $(HEAD_NAME))
 
 # obj
@@ -50,14 +42,14 @@ OBJ_DIR					= obj
 OBJ						= $(addprefix $(OBJ_DIR)/, $(SRC_NAME:.cpp=.o))
 
 # dep
-DEP						:= $(OBJ:.o=.d)
+DEP						:= $(OBJ:.o=.d) $(HEAD:.hpp=.d)
 
 # flags
 CC 						= c++
 CPPFLAGS 				= -c -MMD -MP -Wshadow -Wall -Wextra -Werror  -std=c++98 -pedantic -I $(HEAD_DIR)
 
 # implicit rules
-$(addprefix $(OBJ_DIR)/, %.o): $(addprefix $(SRC_DIR)/, %.cpp) $(HEAD) $(TEMPLATE)
+$(addprefix $(OBJ_DIR)/, %.o): $(addprefix $(SRC_DIR)/, %.cpp) $(HEAD) 
 	$(CC) $(CPPFLAGS) $< -o $(@)
 
 # rules
