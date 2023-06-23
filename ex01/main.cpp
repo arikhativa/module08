@@ -6,7 +6,7 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 16:55:51 by yrabby            #+#    #+#             */
-/*   Updated: 2023/06/22 16:18:44 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/06/23 12:01:07 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,22 @@
 
 int main(void)
 {
+	{
+		Span *ptr = new Span(5);
+		Span sp = *ptr;
+		sp.addNumber(1);
+		sp.addNumber(1);
+		sp.addNumber(3);
+		sp.addNumber(6);
+		std::cout << "ctor test: "  << std::endl;
+		std::cout << "sp: " << sp << std::endl;
+		Span sp2(sp);
+		sp2.addNumber(100);
+		std::cout << "sp2: " << sp2 << std::endl;
+		sp2 = sp;
+		std::cout << "sp2: " << sp2 << std::endl;
+		delete ptr;
+	}
 	{
 		Span sp = Span(5);
 		sp.addNumber(1);
@@ -53,7 +69,7 @@ int main(void)
 
 		std::cout << std::endl << " ------ "  << std::endl << std::endl;
 		std::cout << "complex set[10000]: "  << std::endl;
-		std::cout <<  sp << std::endl;
+		// std::cout <<  sp << std::endl;
 
 		std::cout << sp.shortestSpan() << std::endl;
 		std::cout << sp.longestSpan() << std::endl;
@@ -79,7 +95,7 @@ int main(void)
 
 		std::cout << std::endl << " ------ "  << std::endl << std::endl;
 		std::cout << "complex set[400]: "  << std::endl;
-		std::cout <<  sp << std::endl;
+		// std::cout <<  sp << std::endl;
 
 		std::cout << sp.shortestSpan() << std::endl;
 		std::cout << sp.longestSpan() << std::endl;

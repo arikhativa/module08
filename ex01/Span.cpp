@@ -10,7 +10,6 @@ Span::Span(unsigned int n)
 	_set.clear();
 }
 
-// TODO test this
 Span::Span( const Span & src )
 	:	_max_size(src._max_size),
 		_set(src._set)
@@ -33,7 +32,6 @@ Span::~Span()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-// TODO test this
 Span &				Span::operator=( Span const & rhs )
 {
 	if ( this != &rhs )
@@ -64,11 +62,7 @@ std::ostream &			operator<<( std::ostream & o, Span const & i )
 void	Span::addNumber(int n)
 {
 	if (_set.size() == _max_size)
-	{
-		std::cout << "_set.size(): " << _set.size()<< std::endl;
-		std::cout << "_max_size: " << _max_size<< std::endl;
 		throw std::out_of_range("Not enough space");
-	}
 	_set.insert(n);
 }
 
