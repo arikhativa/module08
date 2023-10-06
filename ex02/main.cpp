@@ -6,152 +6,150 @@
 /*   By: yrabby <yrabby@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 16:55:51 by yrabby            #+#    #+#             */
-/*   Updated: 2023/06/23 13:21:32 by yrabby           ###   ########.fr       */
+/*   Updated: 2023/10/06 12:18:50 by yrabby           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <list>
-#include <iterator>
 #include <iostream>
+#include <iterator>
+#include <list>
 
 #include "MutantStack.hpp"
 
-void	iter_test()
+void iter_test()
 {
-	MutantStack<int> mstack;
+    MutantStack<int> mstack;
 
-	mstack.push(1);
-	mstack.push(2);
-	
-	MutantStack<int>::iterator it = mstack.begin();
+    mstack.push(1);
+    mstack.push(2);
 
-	while (it != mstack.end())
-	{
-		*it += 1;
-		std::cout << *it << std::endl;
-		it++;
-	}
+    MutantStack<int>::iterator it = mstack.begin();
+
+    while (it != mstack.end())
+    {
+        *it += 1;
+        std::cout << *it << std::endl;
+        it++;
+    }
 }
 
-void	const_iter_test()
+void const_iter_test()
 {
-	MutantStack<int> mstack;
+    MutantStack<int> mstack;
 
-	mstack.push(1);
-	mstack.push(2);
-	
-	MutantStack<int>::const_iterator it = mstack.cbegin();
+    mstack.push(1);
+    mstack.push(2);
 
-	while (it != mstack.cend())
-	{
-		std::cout << *it << std::endl;
-		it++;
-	}
+    MutantStack<int>::const_iterator it = mstack.cbegin();
+
+    while (it != mstack.cend())
+    {
+        std::cout << *it << std::endl;
+        it++;
+    }
 }
 
-void	rev_iter_test()
+void rev_iter_test()
 {
-	MutantStack<int> mstack;
+    MutantStack<int> mstack;
 
-	mstack.push(1);
-	mstack.push(2);
-	
-	MutantStack<int>::reverse_iterator it = mstack.rbegin();
+    mstack.push(1);
+    mstack.push(2);
 
-	while (it != mstack.rend())
-	{
-		*it += 10;
-		std::cout << *it << std::endl;
-		it++;
-	}
+    MutantStack<int>::reverse_iterator it = mstack.rbegin();
+
+    while (it != mstack.rend())
+    {
+        *it += 10;
+        std::cout << *it << std::endl;
+        it++;
+    }
 }
 
-void	const_rev_iter_test()
+void const_rev_iter_test()
 {
-	MutantStack<int> mstack;
+    MutantStack<int> mstack;
 
-	mstack.push(-1);
-	mstack.push(-2);
-	
-	MutantStack<int>::const_reverse_iterator it = mstack.crbegin();
+    mstack.push(-1);
+    mstack.push(-2);
 
-	while (it != mstack.crend())
-	{
-		std::cout << *it << std::endl;
-		it++;
-	}
+    MutantStack<int>::const_reverse_iterator it = mstack.crbegin();
+
+    while (it != mstack.crend())
+    {
+        std::cout << *it << std::endl;
+        it++;
+    }
 }
 
-void	subject()
+void subject()
 {
-	MutantStack<int> mstack;
+    MutantStack<int> mstack;
 
-	mstack.push(5);
-	mstack.push(17);
+    mstack.push(5);
+    mstack.push(17);
 
-	std::cout << mstack.top() << std::endl;
+    std::cout << mstack.top() << std::endl;
 
-	mstack.pop();
+    mstack.pop();
 
-	std::cout << mstack.size() << std::endl;
+    std::cout << mstack.size() << std::endl;
 
-	mstack.push(3);
-	mstack.push(5);
-	mstack.push(737);
-	mstack.push(0);
+    mstack.push(3);
+    mstack.push(5);
+    mstack.push(737);
+    mstack.push(0);
 
-	MutantStack<int>::iterator it = mstack.begin();
-	MutantStack<int>::iterator ite = mstack.end();
+    MutantStack<int>::iterator it = mstack.begin();
+    MutantStack<int>::iterator ite = mstack.end();
 
-	++it;
-	--it;
+    ++it;
+    --it;
 
-	while (it != ite)
-	{
-		std::cout << *it << std::endl;
-		++it;
-	}
-	std::stack<int> s(mstack);
-	s.pop();
-	s.pop();
-	std::cout << s.top() << std::endl;
-	std::cout << mstack.top() << std::endl;
-	
+    while (it != ite)
+    {
+        std::cout << *it << std::endl;
+        ++it;
+    }
+    std::stack<int> s(mstack);
+    s.pop();
+    s.pop();
+    std::cout << s.top() << std::endl;
+    std::cout << mstack.top() << std::endl;
 }
 
-void	extra_test()
+void extra_test()
 {
-	{
-		MutantStack<int> mstack;
-		MutantStack<int> mstack2;
+    {
+        MutantStack<int> mstack;
+        MutantStack<int> mstack2;
 
-		mstack.push(1);
-		mstack.push(2);
+        mstack.push(1);
+        mstack.push(2);
 
-		mstack2 = mstack;
+        mstack2 = mstack;
 
-		std::cout << mstack2.top() << std::endl;
-	}
-	{
-		MutantStack<int> mstack;
+        std::cout << mstack2.top() << std::endl;
+    }
+    {
+        MutantStack<int> mstack;
 
-		mstack.push(1);
-		mstack.push(2);
+        mstack.push(1);
+        mstack.push(2);
 
-		MutantStack<int> mstack2(mstack);
+        MutantStack<int> mstack2(mstack);
 
-		std::cout << mstack2.top() << std::endl;
-	}
-	
+        std::cout << mstack2.top() << std::endl;
+    }
 }
 
 int main(void)
 {
-	iter_test();
-	rev_iter_test();
-	const_iter_test();
-	const_rev_iter_test();
-	subject();
-	extra_test();
-	return 0;
+    iter_test();
+    rev_iter_test();
+    const_iter_test();
+    const_rev_iter_test();
+    subject();
+    extra_test();
+    return 0;
 }
