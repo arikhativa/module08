@@ -3,3 +3,4 @@ test
 *.o
 *.vscode
 convert
+.clang-format
